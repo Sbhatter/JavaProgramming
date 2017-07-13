@@ -50,8 +50,7 @@ public class Report {
 	 *            This is the map with Product Name as key and Product as value
 	 */
 	public void generateGeneralReport(HashMap<String, Product> productHashMap) {
-		System.out.println(
-				"-----------------------------------Process is pausing, unable to accept new messages-----------------------------------");
+		System.out.println("-----------------------------------Sale Report-----------------------------------");
 		for (String key : productHashMap.keySet()) {
 			Product product = productHashMap.get(key);
 			System.out.println("Product Name: " + product.getProductName() + "  " + "Total Number Of Product: "
@@ -70,7 +69,8 @@ public class Report {
 	 *            the products
 	 */
 	public void generateAdjustmentReport(ArrayList<String> adjustmentMessageList) {
-		System.out.println("-----------------------------------Sale Report-----------------------------------");
+		System.out.println(
+				"-----------------------------------Process is pausing, unable to accept new messages-----------------------------------");
 		if (adjustmentMessageList != null) {
 			for (String adjustmentMessage : adjustmentMessageList) {
 				System.out.println(adjustmentMessage);

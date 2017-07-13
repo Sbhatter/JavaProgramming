@@ -122,7 +122,7 @@ public class MessageProcessor implements Processor {
 		product.setAdjustmentMessage(adjustmentMessageList);
 		product.setQuantity(product.getQuantity() + productHashMap.get(product.getProductName()).getQuantity());
 		product.setTotalProductPrice(df2Formate(product.getTotalProductPrice()
-				+ (productHashMap.get(product.getProductName()).getTotalProductPrice())));
+				+ productHashMap.get(product.getProductName()).getTotalProductPrice()));
 		productHashMap.put(product.getProductName(), product);
 	}
 
@@ -146,15 +146,15 @@ public class MessageProcessor implements Processor {
 			totalAdjustAmount = getTotalPrice(productHashMap.get(product.getProductName()).getQuantity(),
 					product.getPricePerPC());
 			if (product.getOperationIndicator().equals(OperationIndicator.ADD)) {
-				productHashMapValue.setTotalProductPrice(
-						productHashMap.get(product.getProductName()).getTotalProductPrice() + totalAdjustAmount);
+				productHashMapValue.setTotalProductPrice(df2Formate(
+						productHashMap.get(product.getProductName()).getTotalProductPrice() + totalAdjustAmount));
 			} else if (product.getOperationIndicator().equals(OperationIndicator.SUBTRACT)) {
-				productHashMapValue.setTotalProductPrice(
-						productHashMap.get(product.getProductName()).getTotalProductPrice() - totalAdjustAmount);
+				productHashMapValue.setTotalProductPrice(df2Formate(
+						productHashMap.get(product.getProductName()).getTotalProductPrice() - totalAdjustAmount));
 			} else {
-				productHashMapValue.setTotalProductPrice(
+				productHashMapValue.setTotalProductPrice(df2Formate(
 						productHashMap.get(product.getProductName()).getTotalProductPrice() + getTotalPrice(
-								productHashMap.get(product.getProductName()).getQuantity(), product.getPricePerPC()));
+								productHashMap.get(product.getProductName()).getQuantity(), product.getPricePerPC())));
 			}
 			adjustmentMessage = adjustmentMessage + " to " + df2Formate(productHashMapValue.getTotalProductPrice())
 					+ "p";
